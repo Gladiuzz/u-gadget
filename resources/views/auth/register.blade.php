@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @extends('style.style_css')
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
 

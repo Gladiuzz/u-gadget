@@ -40,7 +40,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
-                <form action="{{route('logout')}}" method="post">
+                <form action="{{route('logout')}}" method="POST">
                     {{ csrf_field() }}
                     <button class="dropdown-item d-flex align-items-center">
                       <i class="bi bi-box-arrow-right"></i>
