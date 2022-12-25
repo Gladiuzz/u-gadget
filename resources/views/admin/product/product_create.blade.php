@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    <title>Create Product</title>
+    <title>Add Product</title>
 @endsection
 
 @section('content')
