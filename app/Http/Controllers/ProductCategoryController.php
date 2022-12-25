@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
 
-class ProductController extends Controller
+class ProductCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,6 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-
-        $data = array(
-            'product' => $products
-        );
-
-        return view('admin.product.product_index', $data);
     }
 
     /**
@@ -31,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.product_create');
+        //
     }
 
     /**
@@ -43,26 +35,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'name' => ['required'],
-            'price' => ['required','numeric'],
-            'stock' => ['required','numeric'],
-            'description' => ['required'],
-            'type' => ['required', 'in:exist,preOrder'],
-            'manufacturer' => ['required'],
-        ]);
-
-
-        Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'description' => $request->description,
-            'type' => $request->type,
-            'manufacturer' => $request->manufacturer,
-        ]);
-
-        return redirect()->route('product')->with('success', 'Product has been added');
     }
 
     /**
