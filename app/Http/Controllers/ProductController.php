@@ -73,7 +73,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -84,7 +84,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::where('id', $id)->first();
+
+        $data = array(
+            'product' => $product
+        );
+
+        return view('admin.product.product_edit', $data);
     }
 
     /**
@@ -96,7 +102,28 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'price' => ['required','numeric'],
+            'stock' => ['required','numeric'],
+            'description' => ['required'],
+            'type' => ['required', 'in:exist,preOrder'],
+            'manufacturer' => ['required'],
+        ]);
+
+        $input = $request->all();
+
+        $product = Product::find($id);
+        $product->name = $input['name'];
+        $product->price = $input['price'];
+        $product->stock = $input['stock'];
+        $product->description = $input['description'];
+        $product->type = $input['type'];
+        $product->manufacturer = $input['manufacturer'];
+
+        $product->update();
+
+        return redirect()->route('product')->with('success', 'Product has been edit');
     }
 
     /**
@@ -107,6 +134,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->delete();
+
+        return redirect()->route('product')
+        ->with('success', 'Product has been deleted');
     }
 }

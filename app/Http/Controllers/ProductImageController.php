@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductImageController extends Controller
@@ -13,7 +15,13 @@ class ProductImageController extends Controller
      */
     public function index()
     {
-        //
+        $products = ProductImage::all();
+
+        $data = array(
+            'product_img' => $products
+        );
+
+        return view('admin.product_img.product_img_index', $data);
     }
 
     /**
@@ -23,7 +31,18 @@ class ProductImageController extends Controller
      */
     public function create()
     {
-        //
+        $product = Product::all();
+
+        $data = array(
+            'products' => $product,
+        );
+
+
+        if (empty($prodct)) {
+            return redirect()->route('product.img')->with('invalid', 'Insert Product First');
+        } else {
+            return view('admin.product_img.product_img_create', $data);
+        }
     }
 
     /**
@@ -34,7 +53,26 @@ class ProductImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'product_id' => ['required'],
+            'url_image' => ['required','image','file','mimes:png,jpg,jpeg'],
+        ]);
+
+        $input = $request->all();
+        // dd($input);
+        $image = $request->file('url_image');
+
+        if (!empty ($image)) {
+            $file_name = time(). "_".$image->getClientOriginalName();
+            $image->storeAs('public/product_image', $file_name);
+
+            ProductImage::create([
+                'product_id' => $input['product_id'],
+                'url_image' => $file_name,
+            ]);
+        }
+
+        return redirect()->route('product.img')->with('success', 'Product Image has been added');
     }
 
     /**
@@ -56,7 +94,15 @@ class ProductImageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::all();
+        $product_img = ProductImage::where('id', $id)->first();
+
+        $data = array(
+            'products' => $product,
+            'product_img' => $product_img,
+        );
+
+        return view('admin.product_img.product_img_edit', $data);
     }
 
     /**
@@ -68,7 +114,25 @@ class ProductImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'product_id' => ['required'],
+        ]);
+
+        $input = $request->all();
+        // dd($input);
+        $image = $request->file('url_image');
+        $product_img = ProductImage::find($id);
+        $product_img->product_id = $input['product_id'];
+
+        if (!empty ($image)) {
+            $file_name = time(). "_".$image->getClientOriginalName();
+            $image->storeAs('public/product_image', $file_name);
+            $product_img->url_image = $file_name;
+        }
+
+        $product_img->update();
+
+        return redirect()->route('product.img')->with('success', 'Product Image has been edit');
     }
 
     /**
@@ -79,6 +143,10 @@ class ProductImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product_img = ProductImage::find($id);
+
+        $product_img->delete();
+
+        return redirect()->route('product.img')->with('success', 'Product Image has been delete');
     }
 }

@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Product</title>
+    <title>Product Image</title>
 @endsection
 
 @section('content')
 
     <div class="pagetitle">
-        <h1>Product Page</h1>
+        <h1>Product Image Page</h1>
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item">Pages</li>
-            <li class="breadcrumb-item active">Product</li>
+            <li class="breadcrumb-item active">Product Image</li>
           </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -23,39 +23,37 @@
                 {{ session()->get('success') }}
             </div>
         @endif
+        @if(session()->has('invalid'))
+            <div class="alert alert-danger">
+                {{ session()->get('invalid') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body m-2">
                         <div class="card-title">
-                            <a href="{{route('product.create')}}" type="button" class="btn btn-outline-success">Add Product</a>
+                            <a href="{{route('product.img.create')}}" type="button" class="btn btn-outline-success">Add Product Image</a>
                         </div>
                         <table id="example" class="table table-striped" style="width:100%">
                             <thead class="text-center">
                                 <tr>
                                     <th>#</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Type</th>
-                                    <th>Manufacturer</th>
+                                    <th>Product Image</th>
+                                    <th>Product</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($product as $item)
+                                @foreach ($product_img as $item)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$item->name}}</td>
-                                        <td>@currency($item->price)</td>
-                                        <td>{{$item->stock}}</td>
-                                        <td>{{$item->type}}</td>
-                                        <td>{{$item->manufacturer}}</td>
+                                        <td><img src="{{asset('storage/product_image/'. $item->url_image)}}" class="img-fluid rounded-start" alt="..." style="width: 150px"></td>
+                                        <td>{{$item->product->name}}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                <button type="button" class="btn btn-info"><i class="bi bi-file me-1"></i>View</button>
-                                                <a href="{{route('product.edit',['id' => $item->id])}}" type="button" class="btn btn-warning"><i class="bi bi-pencil me-1"></i>Edit</a>
-                                                <a href="{{route('product.delete',['id'=>$item->id])}}" type="button" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete</a>
+                                                <a href="{{route('product.img.edit',['id' => $item->id])}}" type="button" class="btn btn-warning"><i class="bi bi-pencil me-1"></i>Edit</a>
+                                                <a href="{{route('product.img.delete',['id'=>$item->id])}}" type="button" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete</a>
                                             </div>
                                         </td>
                                     </tr>
