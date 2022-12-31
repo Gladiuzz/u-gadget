@@ -8,6 +8,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\UserController;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,7 @@ Route::get('/all-product', [GuestController::class, 'indexProduct'])->name('prod
 
 Route::get('/cart', [cartController::class, 'index'])->name('cart');
 Route::post('/add-cart', [cartController::class, 'create'])->name('add.cart');
+Route::post('/update-cart', [cartController::class, 'update']);
 
 Route::get('/checkout',[CheckOutController::class, 'index'])->name('checkout');
 
@@ -59,4 +61,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/product-category-edit/{id}', [ProductCategoryController::class, 'edit'])->name('product.category.edit');
     Route::post('/product-category-update/{id}', [ProductCategoryController::class, 'update'])->name('product.category.update');
     Route::get('/product-category-delete/{id}', [ProductCategoryController::class, 'destroy'])->name('product.category.delete');
+
+    // User
+    Route::get('/user', [UserController::class, 'index'])->name('user');
 });

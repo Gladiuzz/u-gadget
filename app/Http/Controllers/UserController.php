@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\ProductCategory;
-use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
-class GuestController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,16 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $product = Product::where('product.type', '=', 'exist')->paginate(4);
+        
+        $users = DB::table('users')
+        ->where('users.status', '=', 'User')
+        ->get();
 
         $data = array(
-            'products' => $product
+            'user' => $users
         );
 
-        return view('welcome', $data);
+        return view('admin.user.user_index', $data);
     }
 
     /**
@@ -30,15 +32,9 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexProduct()
+    public function create()
     {
-        $product = Product::where('product.type', '=', 'exist')->get();
-
-        $data = array(
-            'products' => $product
-        );
-
-        return view('produk', $data);
+        //
     }
 
     /**

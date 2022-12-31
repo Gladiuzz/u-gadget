@@ -175,11 +175,14 @@ class cartController extends Controller
             $cart = session()->get('order_product');
             $cart[$request->product_id]['qty'] = $request->qty;
             session()->put('order_product', $cart);
+            $total = 0;
 
             foreach ($cart as $key => $value) {
                 $total += $value['product']->price * $value['qty'];
                 $qty += $value['qty'];
             }
+
+            dd($total);
 
         }
     }

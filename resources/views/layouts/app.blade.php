@@ -69,7 +69,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" href="#">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" href="{{route('user')}}">
           <i class="bi bi-person"></i><span>User</span>
         </a>
       </li>
