@@ -38,7 +38,7 @@ class ProductImageController extends Controller
         );
 
 
-        if (empty($prodct)) {
+        if (empty($product)) {
             return redirect()->route('product.img')->with('invalid', 'Insert Product First');
         } else {
             return view('admin.product_img.product_img_create', $data);

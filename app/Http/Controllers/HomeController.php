@@ -25,11 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $total_user = User::all()->count();
+        $total_user = User::where('users.status', '=', 'User')->count();
         $total_product = Product::all()->count();
 
         $data = array(
             'products' => $total_product,
+            'users' => $total_user,
         );
 
         return view('home', $data);

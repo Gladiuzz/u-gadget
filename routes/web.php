@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\cartController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
@@ -19,9 +22,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GuestController::class, 'index'])->name('welcome');
+Route::get('/all-product', [GuestController::class, 'indexProduct'])->name('product.guest');
+
+Route::get('/cart', [cartController::class, 'index'])->name('cart');
+Route::post('/add-cart', [cartController::class, 'create'])->name('add.cart');
+
+Route::get('/checkout',[CheckOutController::class, 'index'])->name('checkout');
 
 Auth::routes();
 Route::group(['middleware' => 'admin'], function() {

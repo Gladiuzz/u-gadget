@@ -39,7 +39,7 @@ class ProductCategoryController extends Controller
             'products' => $product,
         );
 
-        if (empty($prodct)) {
+        if (empty($product)) {
             return redirect()->route('product.category')->with('invalid', 'Insert Product First');
         } else {
             return view('admin.product_category.product_category_create', $data);
