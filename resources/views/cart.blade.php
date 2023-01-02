@@ -33,7 +33,7 @@
                                                 </div>
                                                 <div class="col-md-4 quantity">
                                                     <label for="quantity">Quantity:</label>
-                                                    <input id="quantity" type="number" value="{{$value['qty']}}" class="form-control quantity-input">
+                                                    <input id="quantity" min="1" type="number" value="{{$value['qty']}}" class="form-control quantity-input">
                                                 </div>
                                                 <div class="col-md-3 price">
                                                     <span>@currency($value['product']->price * $value['qty'])</span>

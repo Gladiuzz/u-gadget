@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TransactionController extends Controller
 {
@@ -80,5 +81,58 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getProvince(Request $request)
+    {
+        $api_key = env('API_RAJA_ONGKIR');
+        $id = 1;
+        $url = 'https://api.rajaongkir.com/starter/province?id='.$id;
+
+        $responses = Http::withHeaders([
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'key' => $api_key
+        ])->get($url);
+
+        return $responses;
+
+        // dd($responses);
+    }
+
+    public function getCity(Request $request)
+    {
+        $api_key = env('API_RAJA_ONGKIR');
+        $id = 39;
+        $url = 'https://api.rajaongkir.com/starter/city?province=5&id='.$id;
+
+        $responses = Http::withHeaders([
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'key' => $api_key
+        ])->get($url);
+
+        return $responses;
+
+        // dd($responses);
+    }
+
+    public function getCost(Request $request)
+    {
+        $api_key = env('API_RAJA_ONGKIR');
+        $id = 39;
+        $url = 'https://api.rajaongkir.com/starter/cost';
+
+        $data = array(
+            'origin' => 23,
+            'destination' => 22,
+            'weight' => 1000,
+            'courier' => 'jne',
+        );
+
+        $responses = Http::withHeaders([
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'key' => $api_key
+        ])->post($url, $data);
+
+        return $responses;
     }
 }

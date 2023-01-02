@@ -26,12 +26,14 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [GuestController::class, 'index'])->name('welcome');
 Route::get('/all-product', [GuestController::class, 'indexProduct'])->name('product.guest');
+Route::get('/detail-product/{id}', [GuestController::class, 'detailProduct'])->name('detail.product');
 
 Route::get('/cart', [cartController::class, 'index'])->name('cart');
 Route::post('/add-cart', [cartController::class, 'create'])->name('add.cart');
 Route::post('/update-cart', [cartController::class, 'update']);
 
 Route::get('/checkout',[CheckOutController::class, 'index'])->name('checkout');
+Route::get('/test-api', [TransactionController::class, 'getCost']);
 
 Auth::routes();
 Route::group(['middleware' => 'admin'], function() {

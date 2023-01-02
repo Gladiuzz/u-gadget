@@ -1,70 +1,42 @@
 @extends('layouts.guest_app')
 
 @section('content')
-    <!-- Product -->
-    <section class="collection" id="collection">
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{asset('assets_user/img/ip5.jpeg')}}" class="d-block w-100 img-fluid" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="left: 68%; top: 65%; transform: translateY(-95%)">
-                        <div class="container">
-                            <div class="row justify-content-start text-left">
-                                <div class="col mx-auto"">
-                          <h2 class=" text-dark">Redesign</h2>
-                                    <p class="text-dark">and regenerated with new abilities</p>
-                                    <a class="btn btn-primary cssbuttons-io" href="#" role="button"><span>Detail</span></a>
-                                </div>
-                            </div>
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach ($products as $item)
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{asset('storage/product_image/'.$item->image[0]['url_image'])}}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{$item->name}}</h5>
+                            <!-- Product price-->
+                            @currency($item->price)
                         </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{route('detail.product', ['id'=>$item->id])}}">View Detail</a></div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-    </section>
-    <!-- End Product -->
-
-    <!-- Card Product -->
-    <section class="section-products">
-        <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="header">
-                        <h3>Featured Product</h3>
-                        <h2>Popular Products</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Single Product -->
-                @foreach ($products as $item)
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <form action="{{route('add.cart')}}" enctype="multipart/form-data" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="product_id" value="{{$item->id}}">
-                        @foreach ($item->categorys as $category)
-                        <input type="hidden" name="product_category_id" value="{{$category->id}}">
-                        @endforeach
-                        <div id="product-1" class="single-product">
-                            <div class="part-1">
-                                <img src="{{asset('storage/product_image/'.$item->image[0]['url_image'])}}" class="card-img" style="height: 425px;" alt="...">
-                                <ul>
-                                    <li><button><i class="fas fa-shopping-cart"></i></button></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">{{$item->name}}</h3>
-                                <h4 class="product-price">@currency($item->price)</h4>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!-- End Card Product -->
+    </div>
+</section>
 @endsection
+

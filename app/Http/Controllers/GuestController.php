@@ -41,6 +41,18 @@ class GuestController extends Controller
         return view('produk', $data);
     }
 
+    public function detailProduct($id)
+    {
+        $product = Product::find($id);
+
+        $data = array(
+            'product' => $product
+        );
+
+
+        return view('detail', $data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

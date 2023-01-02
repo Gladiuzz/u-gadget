@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
     {
         $data_product = [
             [
-                'id' => '1',
+                'id' => '100',
                 'name' => 'Iphone XII',
                 'price' => 2500000,
                 'stock' => 100,
@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
                 'manufacturer' => 'Apple'
             ],
             [
-
+                'id' => '101',
                 'name' => 'Iphone XI',
                 'price' => 2000000,
                 'stock' => 10,
@@ -39,12 +39,12 @@ class ProductSeeder extends Seeder
 
         $data_category = [
             [
-                'product_id' => $data_product[0]['id'],
+                'product_id' => '100',
                 'category' => 'Gold',
                 'stock' => '100',
             ],
             [
-                'product_id' => $data_product[1]['id'],
+                'product_id' => '101',
                 'category' => 'Silver',
                 'stock' => '10',
             ],
@@ -52,11 +52,11 @@ class ProductSeeder extends Seeder
 
         $data_image = [
             [
-                'product_id' => $data_product[0]['id'],
+                'product_id' => '100',
                 'url_image' => asset('assets_user/img/ipro.png'),
             ],
             [
-                'product_id' => $data_product[1]['id'],
+                'product_id' => '101',
                 'url_image' => asset('assets_user/img/ipro.png'),
             ],
         ];
