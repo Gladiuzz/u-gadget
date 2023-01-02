@@ -8,6 +8,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Auth;
@@ -64,4 +65,10 @@ Route::group(['middleware' => 'admin'], function() {
 
     // User
     Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user-edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/user-update/{id}', [UserController::class, 'update'])->name('user.update');
+
+    // Transaction
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+    Route::get('/transaction-detail', [TransactionController::class, 'show'])->name('transaction.detail');
 });

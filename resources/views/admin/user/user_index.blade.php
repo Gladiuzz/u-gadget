@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body m-2">
                         <div class="card-title">
-                            <a href="{{route('product.create')}}" type="button" class="btn btn-outline-success">Add Product</a>
+                            {{-- <a href="{{route('product.create')}}" type="button" class="btn btn-outline-success">Add Product</a> --}}
                         </div>
                         <table id="example" class="table table-striped" style="width:100%">
                             <thead class="text-center">
@@ -51,8 +51,7 @@
                                         <td>{{$item->status}}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                <a href="#" type="button" class="btn btn-warning"><i class="bi bi-pencil me-1"></i>Edit</a>
-                                                <a href="#" type="button" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete</a>
+                                                <a href="{{route('user.edit', ['id' => $item->id])}}" type="button" class="btn btn-warning"><i class="bi bi-pencil me-1"></i>Edit</a>
                                             </div>
                                         </td>
                                     </tr>

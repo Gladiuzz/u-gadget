@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $users = DB::table('users')
-        ->where('users.status', '=', 'User')
-        ->get();
-
-        $data = array(
-            'user' => $users
-        );
-
-        return view('admin.user.user_index', $data);
+        return view('admin.transaction.transaction_index');
     }
 
     /**
@@ -54,9 +43,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('admin.transaction.transaction_detail');
     }
 
     /**
@@ -67,15 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        $data = array(
-            'user' => $user
-        );
-
-        return view('admin.user.user_edit', $data);
-
-
+        //
     }
 
     /**
@@ -87,24 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255',],
-            'email' => ['required', 'string', 'email', 'max:255',],
-            'status' => ['required'],
-        ]);
-
-        $input = $request->all();
-
-        $user = User::find($id);
-        $user->name = $input['name'];
-        $user->username = $input['username'];
-        $user->email = $input['email'];
-        $user->status = $input['status'];
-
-        $user->update();
-
-        return redirect()->route('user')->with('success', 'User has been edit');
+        //
     }
 
     /**

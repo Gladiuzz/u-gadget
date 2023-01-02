@@ -96,6 +96,11 @@
           </li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" href="{{route('transaction')}}">
+          <i class="bi bi-card-list"></i><span>Transaction</span>
+        </a>
+      </li>
 
     </ul>
 
