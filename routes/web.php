@@ -32,6 +32,8 @@ Route::get('/cart', [cartController::class, 'index'])->name('cart');
 Route::post('/add-cart', [cartController::class, 'create'])->name('add.cart');
 Route::post('/update-cart', [cartController::class, 'update']);
 
+Route::get('about-us', [GuestController::class, 'about'])->name('about.us');
+
 Route::get('/checkout',[CheckOutController::class, 'index'])->name('checkout');
 Route::get('/test-api', [TransactionController::class, 'getCost']);
 

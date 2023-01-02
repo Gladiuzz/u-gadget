@@ -1,129 +1,78 @@
 @extends('layouts.guest_app')
 
 @section('content')
-        <!-- Carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<header class="bg-transparent py-5" style="background-color: rgba(0,0,0,255) !important;">
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center justify-content-center">
+        <div class="col-lg-8 col-xl-7 col-xxl-6">
+          <div class="my-5 text-center text-xl-start">
+            <h2 class="display-5 fw-bolder text-white mb-2">iPhone 14</h2>
+            <h1 class="display-2 fw-bolder text-white mb-2" style="color: #b344ff !important;">PRO</h1>
+            <p class="lead fw-normal text-white-50 mb-4">
+              with an elegant and minimalist design is now here.</p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+              <a class="btn btn-outline-light btn-lg px-4" href="#!">SHOP NOW</a>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="{{asset('assets_user/img/ip3.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                    <div class="container">
-                        <div class="row justify-content-start text-left">
-                            <div class="col-lg-8 mx-auto">
-                              <h2 class="text-dark">iPhone 14</h2>
-                                <p class="text-dark">Introduce Our New Product</p>
-                                <a class="btn btn-primary cssbuttons-io" href="#" role="button"><span>SHOP NOW</span></a>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img src="{{asset('assets_user/img/ip3.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                    <div class="container">
-                      <div class="row justify-content-start text-left">
-                          <div class="col-lg-8 mx-auto">
-                            <h2 class="text-dark">iPhone 14</h2>
-                            <p class="text-dark">Introduce Our New Product</p>
-                            <a class="btn btn-primary cssbuttons-io" href="#" role="button"><span>SHOP NOW</span></a>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img src="{{asset('assets_user/img/ip3.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                    <div class="container">
-                      <div class="row justify-content-start text-left">
-                          <div class="col-lg-8 mx-auto">
-                          <h2 class="text-dark">iPhone 14</h2>
-                            <p class="text-dark">Introduce Our New Product</p>
-                            <a class="btn btn-primary cssbuttons-io" href="#" role="button"><span>SHOP NOW</span></a>
-                          </div>
-                      </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
           </div>
-          <!-- End Carousel -->
-
-        <!-- middle -->
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-inner pt-3">
-                <div class="carousel-item active">
-                  <img src="{{asset('assets_user/img/ipad.jpg')}}" class="d-block w-100 img-fluid" alt="...">
-                  <div class="carousel-caption d-none d-md-block" style="left: 68%; top: 72%; transform: translateY(-95%)">
-                    <div class="container">
-                        <div class="row justify-content-start text-left">
-                            <div class="col-lg-8 mx-auto"">
-                                <h4 class="text-dark">extraordinary. luxurious</h4>
-                                <a class="btn btn-primary cssbuttons-io" href="#" role="button"><span>Detail</span></a>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        </div>
+        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="./img/bg.png" alt="..." /></div>
+      </div>
+    </div>
+  </header>
+  <!-- Features section-->
+  <section class="py-5" id="features">
+    <div class="container px-5 my-5">
+      <div class="row gx-5">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h2 class="fw-bolder mb-0">let's find your favorite item.</h2>
+        </div>
+        <div class="col-lg-8">
+          <div class="row gx-5 row-cols-1 row-cols-md-2">
+            <div class="col mb-5 h-100">
+              <img src="./img/bg2.png" alt="" width="100%">
+              <h2 class="h5 pt-2">iPhone 14 Pro</h2>
+              <p class="mb-0">a mobile phone designed to have great capabilities friendly.</p>
+            </div>
+            <div class="col mb-5 h-100">
+              <img src="./img/bg3.png" alt="" width="100%">
+              <h2 class="h5 pt-2">iPad Pro</h2>
+              <p class="mb-0">ipad which has an elegant and luxurious design.</p>
+            </div>
+            <div class="col mb-5 mb-md-0 h-100">
+              <img src="./img/bg4.png" alt="" width="100%">
+              <h2 class="h5 pt-2">iPad M1</h2>
+              <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+            </div>
+            <div class="col h-100">
+              <img src="./img/ip5.jpeg" alt="" width="100%">
+              <h2 class="h5 pt-2">iPhone 14</h2>
+              <p class="mb-0">
+                Always-On Display. And always ready.</p>
+            </div>
           </div>
-        <!-- End Middle -->
-
-        <!-- Lower -->
-        <section class="lower" id="lower">
-            <div class="container pt-5 text-center">
-                <div class="row justify-content-center">
-                      @foreach($products as $item)
-                  <div class="col-6">
-                  <div class="card text-bg-dark">
-                      <img src="{{asset('storage/product_image/'.$item->image[0]['url_image'])}}" class="card-img" style="height: 425px;" alt="...">
-                      <div class="card-img-overlay">
-                      <h2 class="card-title pt-4">{{$item->name}}</h2>
-                      <p class="card-text">{!! Str::limit($item->description, 10, ' ...') !!}</p>
-                      <a href="#" class="card-text nav-link text-primary"><small>Detail</small></a>
-                      </div>
-                  </div>
-                  </div>
-                  @endforeach
-                  </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonial section-->
+  <div class="py-5 bg-light">
+    <div class="container px-5 my-5">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-10 col-xl-7">
+          <div class="text-center">
+            <div class="fs-4 mb-4 fst-italic">"the more difficult it is to take and live life, believe me someday the results will be even more beautiful!"</div>
+            <div class="d-flex align-items-center justify-content-center">
+              <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+              <div class="fw-bold">
+                U-Gadget
+                <span class="fw-bold text-primary mx-1">/</span>
+                Mr. Dika's class student
               </div>
-        </section>
-        <!-- End Lower -->
-
-          <!-- Product -->
-          <section class="collection" id="collection">
-          <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-inner pt-5">
-                <div class="carousel-item active">
-                  <img src="{{asset('assets_user/img/ip5.jpeg')}}" class="d-block w-100 img-fluid" alt="...">
-                  <div class="carousel-caption d-none d-md-block" style="left: 68%; top: 65%; transform: translateY(-95%)">
-                    <div class="container">
-                        <div class="row justify-content-start text-left">
-                            <div class="col mx-auto"">
-                                <h2 class="text-dark">Redesign</h2>
-                                <p class="text-dark">and regenerated with new abilities</p>
-                                <a class="btn btn-primary cssbuttons-io" href="#" role="button"><span>Detail</span></a>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
           </div>
-          </section>
-          <!-- End Product -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
 @endsection

@@ -53,6 +53,11 @@ class GuestController extends Controller
         return view('detail', $data);
     }
 
+    public function about()
+    {
+        return view('about_us');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
