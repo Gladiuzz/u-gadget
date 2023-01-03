@@ -132,54 +132,8 @@ class CheckOutController extends Controller
         }
 
         session()->forget(['order_product', 'zip_code', 'total_price']);
-        return "Transaction Success";
-        // $order = order::create(array(
-        //     'id_user' => Auth::user()->id,
-        //     'tujuan_provinsi' => Request('province_destination'),
-        //     'tujuan_kota' => Input::get('city_destination'),
-        //     'kurir' => Input::get('courier'),
-        //     'berat' => $request->input('weight'),
-        // ));
+        return redirect()->route('thanks');
 
-        // foreach ($request->input('product') as $value) {
-        //     $order_product = new order_product();
-        //     // $order_barang = order_product::create(array(
-        //     //     'id_order' => $order->id_order,
-        //     //     'id_product' => Input::get('id_product'),
-        //     //     'quantity' => Input::get('quantity'),
-        //     // ));
-        //     $order_product->id_order = $order->id_order;
-        //     $order_product->id_product = $value['id_product'];
-        //     $order_product->quantity_order = $value['quantity'];
-        //     $order_product->save();
-        // }
-
-        // // $categories = DB::table('kategori_barang')->get();
-        // // $user = users::find(Auth::user()->id);
-
-        // $ongkir = $request->input('harga-ongkir');
-        // $id_order = $order->id_order;
-
-        // $total_order = $request->input('total-bayar');
-
-        // // $harga_transaksi = session()->set('harga_transaksi');
-
-        // $data = array(
-        //     'ongkir' => $ongkir,
-        //     'total_order' => $total_order,
-        //     'id_order' => $id_order,
-        //     // 'categories' => $categories,
-        //     // 'user' => $user,
-        // );
-
-
-        // session()->put('tests', $data);
-
-
-        // $order->save();
-
-        // return redirect()->route('shipping');
-        // return view('shipping', $data);
     }
 
 
